@@ -1,0 +1,122 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/WEB-INF/testTemplate.xhtml">
+        <ui:define name="content">
+            <!-- Start Product Grid -->
+            <section class="htc__product__grid bg__white ptb--100">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-9 col-lg-push-3 col-md-9 col-md-push-3 col-sm-12 col-xs-12">
+                            <div class="htc__product__rightidebar">
+                                <div class="htc__grid__top">
+                                    <div class="htc__select__option">
+                                        <select class="ht__select">
+                                            <option>Default softing</option>
+                                            <option>Sort by popularity</option>
+                                            <option>Sort by average rating</option>
+                                            <option>Sort by newness</option>
+                                        </select>
+                                    </div>
+                                    <div class="ht__pro__qun">
+                                        <span>Showing 1-12 of #{productBean.numberSearch(searchBean.key)} products</span>
+                                    </div>
+                                    <!-- Start List And Grid View -->
+                                    <ul class="view__mode" role="tablist">
+                                        <li role="presentation" class="grid-view active"><a href="#grid-view" role="tab" data-toggle="tab"><i class="zmdi zmdi-grid"></i></a></li>
+                                        <li role="presentation" class="list-view"><a href="#list-view" role="tab" data-toggle="tab"><i class="zmdi zmdi-view-list"></i></a></li>
+                                    </ul>
+                                    <!-- End List And Grid View -->
+                                </div>
+                                <!-- Start Product View -->
+                                <div class="row">
+                                    <div class="shop__grid__view__wrap">
+                                        <div role="tabpanel" id="grid-view" class="single-grid-view tab-pane fade in active clearfix">
+                                            <!-- Start Single Product -->
+                                            <h:form>
+                                            <p:dataScroller value="#{productBean.search(searchBean.key)}" var="item" chunkSize="9">
+                                                <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12">
+                                                    <div class="category">
+                                                        <div class="ht__cat__thumb">
+                                                            <a href="productDetail.xhtml?id=#{item.id}">
+                                                                <img src="#{item.image}" alt="product images" />
+                                                            </a>
+                                                        </div>
+                                                        <div class="fr__hover__info">
+                                                            <ul class="product__action">
+                                                                <li><a href="wishlist.html"><i class="icon-heart icons"></i></a></li>
+                                                                <li><h:commandLink action="#{cartController.addToCart(item)}"><i class="icon-handbag icons"></i></h:commandLink></li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="fr__product__inner">
+                                                            <h4><a href="productDetail.xhtml?id=#{item.id}">#{item.name}</a></h4>
+                                                            <ul class="fr__pro__prize">
+                                                                <!--<li class="old__prize">$30.3</li>-->
+                                                                <li>#{item.price} DH</li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </p:dataScroller>
+                                            <!--<ui:repeat var="item" value="#{productBean.search(searchBean.key)}" varStatus="status">
+                                                
+                                            </ui:repeat>-->
+                                            </h:form>
+                                            
+                                            
+                                        </div>
+  
+                                    </div>
+                                </div>
+                                <!-- End Product View -->
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-lg-pull-9 col-md-3 col-md-pull-9 col-sm-12 col-xs-12 smt-40 xmt-40">
+                            <div class="htc__product__leftsidebar">
+                                <!-- Start Prize Range -->
+                                <div class="htc-grid-range">
+                                    <h4 class="title__line--4">Price</h4>
+                                    <div class="content-shopby">
+                                        <div class="price_filter s-filter clear">
+                                            <form action="#" method="GET">
+                                                <div id="slider-range"></div>
+                                                <div class="slider__range--output">
+                                                    <div class="price__output--wrap">
+                                                        <div class="price--output">
+                                                            <span>Price :</span><input type="text" id="amount" readonly="readonly" />
+                                                        </div>
+                                                        <div class="price--filter">
+                                                            <a href="#">Filter</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Prize Range -->
+                                <!-- Start Category Area -->
+                                <div class="htc__category">
+                                    <h4 class="title__line--4">categories</h4>
+                                    <ul class="ht__cat__list">
+                                        <ui:repeat var="item" value="#{categoryBean.allCategory}">
+                                            <li><a href="categroy.xhtml?id=#{item.id}">#{item.name}</a></li>
+                                        </ui:repeat>
+                                    </ul>
+                                </div>
+                                <!-- End Category Area -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- End Product Grid -->
+        </ui:define>
+    </ui:composition>
+</html>

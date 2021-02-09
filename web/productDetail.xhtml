@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <ui:composition template="/WEB-INF/testTemplate.xhtml">
+        <ui:define name="content">
+            <!-- Start Product Details Area -->
+            <!-- Start Bradcaump area -->
+            <div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(resources/images/bg/4.jpg) no-repeat scroll center center / cover ;">
+                <div class="ht__bradcaump__wrap">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="bradcaump__inner">
+                                    <nav class="bradcaump-inner">
+                                      <a class="breadcrumb-item" href="index.html">Home</a>
+                                      <span class="brd-separetor"><i class="zmdi zmdi-chevron-right"></i></span>
+                                      <a class="breadcrumb-item" href="product-grid.html">Products</a>
+                                      <span class="brd-separetor"><i class="zmdi zmdi-chevron-right"></i></span>
+                                      <span class="breadcrumb-item active">ean shirt</span>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Bradcaump area -->
+            <section class="htc__product__details bg__white ptb--100">
+                <!-- Start Product Details Top -->
+                <div class="htc__product__details__top">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-5 col-lg-5 col-sm-12 col-xs-12">
+                                <div class="htc__product__details__tab__content">
+                                    <!-- Start Product Big Images -->
+                                    <div class="product__big__images">
+                                        <div class="portfolio-full-image tab-content">
+                                            <div role="tabpanel" class="tab-pane fade in active" id="img-tab-1">
+                                                <img src="#{productBean.getProductById(param['id']).getImage()}" alt="full-image" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End Product Big Images -->
+                                </div>
+                            </div>
+                            <div class="col-md-7 col-lg-7 col-sm-12 col-xs-12 smt-40 xmt-40">
+                                <div class="ht__product__dtl">
+                                    <h2>#{productBean.getProductById(param['id']).getName()}</h2>
+                                    <h6>Model: <span>#{productBean.getProductById(param['id']).getModel()}</span></h6>
+                                    <ul  class="pro__prize">
+                                        <li>#{productBean.getProductById(param['id']).getPrice()} DH</li>
+                                    </ul>
+                                    <p class="pro__info">#{productBean.getProductById(param['id']).getDescription()}</p>
+                                    <div class="ht__pro__desc">
+                                        <div class="sin__desc">
+                                            <p><span>Availability:</span> In Stock</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Product Details Top -->
+            </section>
+            <!-- End Product Details Area -->
+        </ui:define>
+    </ui:composition>
+</html>

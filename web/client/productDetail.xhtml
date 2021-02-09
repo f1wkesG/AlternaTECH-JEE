@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <ui:composition template="/WEB-INF/template2.xhtml">
+        
+            <ui:define name="content">
+                <h:form>
+                    <h1><h:outputText value="#{productBean.getProductById(param['id']).getName()}" /></h1>
+                    <img src="#{productBean.getProductById(param['id']).getImage()}" />
+                    <p><h:outputText value="#{productBean.getProductById(param['id']).getDescription()}" /></p>
+                    <p><h:outputText value="#{productBean.getProductById(param['id']).getPrice()}DH" /></p>
+                    <h:commandLink action="#{cartController.addToCart(productBean.getProductById(param['id']))}" value="Add to cart"></h:commandLink>
+                </h:form>
+            </ui:define>
+        
+    </ui:composition>
+</html>
+

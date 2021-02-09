@@ -1,0 +1,173 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <ui:composition template="/WEB-INF/testTemplate.xhtml">
+        <ui:define name="content">
+            <!-- Start Slider Area -->
+            <div class="slider__container slider--one bg__cat--3">
+                <div class="slide__container slider__activation__wrap owl-carousel">
+                    <!-- Start Single Slide -->
+                    <div class="single__slide animation__style01 slider__fixed--height">
+                        <div class="container">
+                            <div class="row align-items__center">
+                                <div class="col-md-7 col-sm-7 col-xs-12 col-lg-6">
+                                    <div class="slide">
+                                        <div class="slider__inner">
+                                            <h2>Tous les accessoires informatique</h2>
+                                            <h1>A votre disposition</h1>
+                                            <div class="cr__btn">
+                                                <a href="cart.html">Shop Now</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-sm-5 col-xs-12 col-md-5">
+                                    <div class="slide__thumb">
+                                        <img src="resources/images/slider/fornt-img/3.png" alt="slider images" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Single Slide -->
+                    <!-- Start Single Slide -->
+                    <div class="single__slide animation__style01 slider__fixed--height">
+                        <div class="container">
+                            <div class="row align-items__center">
+                                <div class="col-md-7 col-sm-7 col-xs-12 col-lg-6">
+                                    <div class="slide">
+                                        <div class="slider__inner">
+                                            <h2>Le dernièrs Iphone X</h2>
+                                            <h1>Disponible</h1>
+                                            <div class="cr__btn">
+                                                <a href="cart.html">Shop Now</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-sm-5 col-xs-12 col-md-5">
+                                    <div class="slide__thumb">
+                                        <img src="https://www.jakapp.com.au/wp-content/uploads/2019/05/iphone-x-mockup-against-transparent-background-a17152-e1558941875556.png" alt="slider images" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Single Slide -->
+                </div>
+            </div>
+            <!-- Start Slider Area -->
+            <!-- Start Prize Good Area -->
+            <section class="htc__good__sale bg__cat--3">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
+                            <div class="fr__prize__inner">
+                                <h2>[Nom Site] vous permet de trouver tous les accessoires informatiques dont vous aurait besoin</h2>
+                                <h3>.</h3>
+                                <a class="fr__btn" href="#">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- End Prize Good Area -->
+             <!-- Start Product Area -->
+            <section class="ftr__product__area ptb--100">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="section__title--2 text-center">
+                                <h2 class="title__line">Top 4 Produits</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="product__wrap clearfix">
+                            <ui:repeat value="#{commandeBean.getTopProducts()}" var="item" size="4">
+                                <!-- Start Single Category -->
+                                <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12">
+                                    <div class="category">
+                                        <div class="ht__cat__thumb">
+                                            <a href="productDetail.xhtml?id=#{item}">
+                                                <img src="#{productBean.getProductById(item).getImage()}" alt="product images" />
+                                            </a>
+                                        </div>
+                                        <div class="fr__hover__info">
+                                            <ul class="product__action">
+                                                <li><a href="cart.html"><i class="icon-handbag icons"></i></a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="fr__product__inner">
+                                            <h4><a href="productDetail.xhtml?id=#{item}">#{productBean.getProductById(item).getName()}</a></h4>
+                                            <ul class="fr__pro__prize">
+                                                <li>#{productBean.getProductById(item).getPrice()}</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Single Category -->
+                            </ui:repeat>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- End Product Area -->
+            <!-- Start Testimonial Area -->
+            <section class="htc__testimonial__area bg__cat--4">
+                <div class="container">
+                    <div class="row">
+                        <div class="ht__testimonial__activation clearfix">
+                            <!-- Start Single Testimonial -->
+                            <div class="col-lg-6 col-md-6 single__tes">
+                                <div class="testimonial">
+                                    <div class="testimonial__thumb">
+                                        <!--<img src="resources/images/test/2.jpg" alt="testimonial images" />-->
+                                    </div>
+                                    <div class="testimonial__details">
+                                        <h4><a href="#">Nombre d'utilisateur</a></h4>
+                                        <p>#{authBean.nbrUser()} Utilisateurs</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Single Testimonial -->
+                            <!-- Start Single Testimonial -->
+                            <div class="col-lg-6 col-md-6 single__tes">
+                                <div class="testimonial">
+                                    <div class="testimonial__thumb">
+                                        <!--<img src="resources/images/test/2.jpg" alt="testimonial images" />-->
+                                    </div>
+                                    <div class="testimonial__details">
+                                        <h4><a href="#">Nombre de produits</a></h4>
+                                        <p>#{productBean.nbrProduct} Produits</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Single Testimonial -->
+                            <!-- Start Single Testimonial -->
+                            <div class="col-lg-6 col-md-6 single__tes">
+                                <div class="testimonial">
+                                    <div class="testimonial__thumb">
+                                        <!--<img src="resources/images/test/2.jpg" alt="testimonial images" />-->
+                                    </div>
+                                    <div class="testimonial__details">
+                                        <h4><a href="#">Nombre d'utilisateur connectés</a></h4>
+                                        <p></p>
+                                        <p>#{authBean.sessionCount()} Utilisateurs connectés </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Single Testimonial -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- End Testimonial Area -->
+        </ui:define>
+    </ui:composition>
+</html>

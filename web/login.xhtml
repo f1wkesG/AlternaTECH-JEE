@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <ui:composition template="/WEB-INF/testTemplate.xhtml">
+        <ui:define name="content">
+              <section class="htc__blog__details bg_gray ptb--100">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12 col-lg-12">
+                            <div class="htc__blog__details__wrap">
+                                <!-- Start comment Form -->
+                                <div class="ht__comment__form">
+                                    <h4 class="title__line--5">Login</h4>
+                                    <b:form horizontal="true"> 
+                                        <div class="comment__form">
+                                            <b:inputText placeholder="Username" id="username" colMd="10" labelColMd="2" value="#{authBean.userEntity.username}" required="true">
+                                            </b:inputText>
+                                            <b:inputText placeholder="Password" id="password" value="#{authBean.userEntity.password}" required="true" colMd="10" labelColMd="2">
+                                            </b:inputText>
+                                        </div>
+                                        <div class="comment__form message">
+                                            <b:column span="2" offset="2">
+                                                <b:commandButton value="Connexion" action="#{authBean.login()}" look="primary" style="width:100%" />
+                                            </b:column>
+                                            <b:column span="2">
+                                                <b:link value="Inscription" outcome="register"  look="info" style="width:100%" />
+                                            </b:column>
+                                        </div>
+                                        
+                                      </b:form>
+                                </div>
+                                <!-- End comment Form -->
+
+                            </div>
+                        </div>  
+                    </div>
+                </div>
+            </section>
+        </ui:define>
+    </ui:composition>
+</html>
+

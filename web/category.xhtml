@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/WEB-INF/testTemplate.xhtml">
+        <ui:define name="content">
+         <!-- Start Category Area -->
+        <section class="htc__category__area ptb--100">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="section__title--2 text-center">
+                            <h2 class="title__line">Les Catégories</h2>
+                            <p>But I must explain to you how all this mistaken idea</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="htc__product__container">
+                    <div class="row">
+                        <div class="product__list clearfix mt--30">
+                            <ui:repeat var="item" value="#{productBean.getProductByCat(param['id'])}">
+                                <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12">
+                                    <div class="category">
+                                        <div class="ht__cat__thumb">
+                                            <a href="productDetail.xhtml?id=#{item.id}">
+                                                <img src="#{item.image}" alt="product images" />
+                                            </a>
+                                        </div>
+                                        <div class="fr__hover__info">
+                                            <ul class="product__action">
+                                                <li><a href="wishlist.html"><i class="icon-heart icons"></i></a></li>
+                                                <li><h:commandLink action="#{cartController.addToCart(item)}"><i class="icon-handbag icons"></i></h:commandLink></li>
+                                            </ul>
+                                        </div>
+                                        <div class="fr__product__inner">
+                                            <h4><a href="productDetail.xhtml?id=#{item.id}">#{item.name}</a></h4>
+                                            <ul class="fr__pro__prize">
+                                                <!--<li class="old__prize">$30.3</li>-->
+                                                <li>#{item.price} DH</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ui:repeat>
+                                
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Category Area -->
+        </ui:define>
+    </ui:composition>
+</html>

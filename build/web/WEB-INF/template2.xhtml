@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <h:head>
+        <title>BootsFaces Basic Page</title>
+    </h:head>
+    <h:body>
+        <!--  Navigation Bar -->
+        <b:navBar brand="Brand" brandHref="index" fluid="true" styleClass="menu">
+            <b:navbarLinks>
+              <b:navLink value="Products" href="products.xhtml"></b:navLink>
+              <b:navLink value="Help" href="help"></b:navLink>
+            </b:navbarLinks>
+            
+            
+            <!-- Following line is needed for TBS 3.0.1 (panel content overflow issue) -->
+            <b:navbarLinks pull="right"><b:navLink value="    " href="#"></b:navLink></b:navbarLinks>
+            <b:form horizontal="true" class="navbar-form navbar-left hidden-md hidden-sm hidden-xs" role="search"> 
+                <b:inputText placeholder="Search" id="search" colMd="10" labelColMd="2" value="#{searchBean.key}" required="true"></b:inputText>
+                <b:commandButton value="Search" action="./search.xhtml"  />
+            </b:form>
+            <b:navbarLinks pull="right" styleClass="hidden-xs">
+                <b:navLink value="Panier (#{cartController.numInCart()})" href="cart.xhtml"></b:navLink>
+              <b:dropMenu value="#{authBean.userEntity.username}">
+                <b:navLink value="Profile" href="account.xhtml"></b:navLink>
+                <b:navLink value="Deconnexion" href="/client/logout.xhtml"></b:navLink>
+                <b:navLink></b:navLink>
+                <b:navLink header="Nav header"></b:navLink>
+                <b:navLink value="Separated link" href="#"></b:navLink>
+                <b:navLink value="One more separated link" href="#"></b:navLink>
+              </b:dropMenu>
+            </b:navbarLinks>
+          </b:navBar>
+        <!-- END NavBAR-->
+    
+        <b:container>
+            <ui:insert name="content"></ui:insert>
+        </b:container>
+    </h:body>
+
+</html>

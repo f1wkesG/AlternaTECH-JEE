@@ -1,0 +1,350 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:b="http://bootsfaces.net/ui">
+
+    <h:head>
+        <!--<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="./css/default.css"/>
+        <h:outputStylesheet name="./css/cssLayout.css"/>
+        <title>Facelets Template</title>-->
+        <meta charset="utf-8" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge" />
+        <title>AlternaTECH</title>
+        <meta name="description" content="" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />  
+
+        <!-- Place favicon.ico in the root directory -->
+        <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" />
+        <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+
+
+        <!-- All css files are included here. -->
+        <!-- Bootstrap fremwork main css -->
+        <h:outputStylesheet name="css/bootstrap.min.css"  />
+        <!-- Owl Carousel min css -->
+        <h:outputStylesheet name="css/owl.carousel.min.css"  />
+        <h:outputStylesheet name="css/owl.theme.default.min.css"  />
+        <!-- This core.css file contents all plugings css file. -->
+        <h:outputStylesheet name="css/core.css"  />
+        <!-- Theme shortcodes/elements style -->
+        <h:outputStylesheet name="css/shortcode/shortcodes.css"  />
+        <!-- Theme main style -->
+        <h:outputStylesheet name="css/style.css"  />
+        <!-- Responsive css -->
+        <h:outputStylesheet name="css/responsive.css"  />
+        <!-- User style -->
+        <h:outputStylesheet name="css/custom.css"  />
+
+
+        <!-- Modernizr JS -->
+        <h:outputScript library="js" name="vendor/modernizr-3.5.0.min.js" />
+    </h:head>
+
+    <h:body>
+        <!--<div id="content" class="center_content">
+            <ui:insert name="content">Content</ui:insert>
+        </div>-->
+
+    </h:body>
+    <h:body>
+    <!-- Body main wrapper start -->
+    <div class="wrapper">
+        <!-- Start Header Style -->
+        <header id="htc__header" class="htc__header__area header--one">
+            <!-- Start Mainmenu Area -->
+            <div id="sticky-header-with-topbar" class="mainmenu__wrap sticky__header">
+                <div class="container">
+                    <div class="row">
+                        <div class="menumenu__container clearfix">
+                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-5"> 
+                                <div class="logo">
+                                     <a href="index.xhtml"><img src="resources/images/logo/1.png" /></a>
+                                </div>
+                            </div>
+                            <div class="col-md-7 col-lg-8 col-sm-5 col-xs-3">
+                                <nav class="main__menu__nav hidden-xs hidden-sm">
+                                    <ul class="main__menu">
+                                        <li><a href="index.xhtml">Home</a></li>
+                                        <li class="drop"><a href="#">Categories</a>
+                                            <ul class="dropdown">
+                                                <ui:repeat var="it" value="#{categoryBean.allCategory}">
+                                                    <li><a href="faces/category.xhtml?id=#{it.id}">#{it.name}</a></li>
+                                                </ui:repeat>
+                                            </ul>
+                                        </li>
+                                        <c:if test="#{not authBean.islogged}">
+                                            <li><a href="faces/login.xhtml">Connexion</a></li>
+                                            <li><a href="faces/register.xhtml">Inscription</a></li>
+                                        </c:if>
+                                        <c:if test="#{authBean.islogged}">
+                                            <li class="drop"><a href="#">#{authBean.userEntity.username}</a>
+                                                <ul class="dropdown">
+                                                   <li><h:form><h:commandButton action="account" value="Account"></h:commandButton></h:form></li>
+                                                   <li><h:form><h:commandButton action="#{authBean.deconnexion()}" value="Deconnexion"></h:commandButton></h:form></li>
+                                               </ul>
+                                            </li>
+                                        </c:if>
+                                    </ul>
+                                </nav>
+                                <div class="mobile-menu clearfix visible-xs visible-sm">
+                                    <nav id="mobile_dropdown">
+                                        <ul>
+                                            <li><a href="index.xhtml">Home</a></li>
+                                            <li class="drop"><a href="#">Categories</a>
+                                                <ul class="dropdown">
+                                                    <ui:repeat var="it" value="#{categoryBean.allCategory}">
+                                                        <li><a href="category.xhtml?id=#{it.id}">#{it.name}</a></li>
+                                                    </ui:repeat>
+                                                </ul>
+                                            </li>
+                                            <c:if test="#{not authBean.islogged}">
+                                                <li><a href="faces/login.xhtml">Connexion</a></li>
+                                                <li><a href="faces/register.xhtml">Inscription</a></li>
+                                            </c:if>
+                                            <c:if test="#{authBean.islogged}">
+                                                <li class="drop"><a href="#">#{authBean.userEntity.username}</a>
+                                                    <ul class="dropdown">
+                                                       <li><a href="account.xhtml">Account</a></li>
+                                                       <li><a href="logout.xhtml">Deconnexion</a></li>
+                                                   </ul>
+                                                </li>
+                                            </c:if>
+                                        </ul>
+                                    </nav>
+                                </div>  
+                            </div>
+                            <div class="col-md-3 col-lg-2 col-sm-4 col-xs-4">
+                                <div class="header__right">
+                                        <div class="header__search search search__open">
+                                            <a href="#"><i class="icon-magnifier icons"></i></a>
+                                        </div>
+                                    <c:if test="#{authBean.islogged}">
+                                        <div class="header__account">
+                                            <a href="account.xhtml"><i class="icon-user icons"></i></a>
+                                        </div>
+                                        <div class="htc__shopping__cart">
+                                            <a class="cart__menu" href="%23"><i class="icon-handbag icons"></i></a>
+                                            <a href="#"><span class="htc__qua">#{cartController.numInCart()}</span></a>
+                                        </div>
+                                    </c:if>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mobile-menu-area"></div>
+                </div>
+            </div>
+            <!-- End Mainmenu Area -->
+        </header>
+        <!-- End Header Area -->
+
+        <div class="body__overlay"></div>
+        <!-- Start Offset Wrapper -->
+        <div class="offset__wrapper">
+            <!-- Start Search Popap -->
+            <div class="search__area">
+                <div class="container" >
+                    <div class="row" >
+                        <div class="col-md-12" >
+                            <div class="search__inner">
+                                <h:form> 
+                                    <h:inputText value="#{searchBean.key}"></h:inputText>
+                                    <h:commandButton action="search.xhtml"  />
+                                </h:form>
+                                <div class="search__close__btn">
+                                    <span class="search__close__btn_icon"><i class="zmdi zmdi-close"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Search Popap -->
+            <!-- Start Cart Panel -->
+            <div class="shopping__cart">
+                <div class="shopping__cart__inner">
+                    <div class="offsetmenu__close__btn">
+                        <a href="#"><i class="zmdi zmdi-close"></i></a>
+                    </div>
+                    <div class="shp__cart__wrap">
+                        <ui:repeat var="it" value="#{cartController.cart}">
+                            <div class="shp__single__product">
+                            <div class="shp__pro__thumb">
+                                <a href="#">
+                                    <img src="#{it.product.image}" alt="product images" />
+                                </a>
+                            </div>
+                            <div class="shp__pro__details">
+                                <h2><a href="product-details.html">#{it.product.name}</a></h2>
+                                <span class="quantity">QTY: #{it.quantity}</span>
+                                <span class="shp__price">#{it.product.price * it.quantity} DH</span>
+                            </div>
+                            <div class="remove__btn">
+                                <a href="cart.xhtml" title="Remove this item"><i class="zmdi zmdi-close"></i></a>
+                            </div>
+                        </div>
+                        </ui:repeat>
+                        
+                    </div>
+                    <ul class="shoping__total">
+                        <li class="subtotal">Subtotal:</li>
+                        <li class="total__price">#{cartController.totalPrice()} DH</li>
+                    </ul>
+                    <ul class="shopping__btn">
+                        <li><a href="faces/cart.xhtml">View Cart</a></li>
+                        <li class="shp__checkout"><a href="checkout.xhtml">Checkout</a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- End Cart Panel -->
+        </div>
+        <!-- End Offset Wrapper -->
+
+        <!-- Start Category Area -->
+        <ui:insert name="content">
+            
+        </ui:insert>
+        <!-- End Category Area -->
+
+
+
+
+        <!-- Start Footer Area -->
+        <footer id="htc__footer">
+            <!-- Start Footer Widget -->
+            <div class="footer__container bg__cat--1">
+                <div class="container">
+                    <div class="row">
+                        <!-- Start Single Footer Widget -->
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <div class="footer">
+                                <h2 class="title__line--2">ABOUT US</h2>
+                                <div class="ft__details">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim</p>
+                                    <div class="ft__social__link">
+                                        <ul class="social__link">
+                                            <li><a href="#"><i class="icon-social-twitter icons"></i></a></li>
+
+                                            <li><a href="#"><i class="icon-social-instagram icons"></i></a></li>
+
+                                            <li><a href="#"><i class="icon-social-facebook icons"></i></a></li>
+
+                                            <li><a href="#"><i class="icon-social-google icons"></i></a></li>
+
+                                            <li><a href="#"><i class="icon-social-linkedin icons"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Single Footer Widget -->
+                        <!-- Start Single Footer Widget -->
+                        <div class="col-md-2 col-sm-6 col-xs-12 xmt-40">
+                            <div class="footer">
+                                <h2 class="title__line--2">information</h2>
+                                <div class="ft__inner">
+                                    <ul class="ft__list">
+                                        <li><a href="#">About us</a></li>
+                                        <li><a href="#">Delivery Information</a></li>
+                                        <li><a href="#">Privacy et Policy</a></li>
+                                        <li><a href="#">Terms  et Condition</a></li>
+                                        <li><a href="#">Manufactures</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Single Footer Widget -->
+                        <!-- Start Single Footer Widget -->
+                        <div class="col-md-2 col-sm-6 col-xs-12 xmt-40 smt-40">
+                            <div class="footer">
+                                <h2 class="title__line--2">my account</h2>
+                                <div class="ft__inner">
+                                    <ul class="ft__list">
+                                        <li><a href="#">My Account</a></li>
+                                        <li><a href="cart.html">My Cart</a></li>
+                                        <li><a href="#">Login</a></li>
+                                        <li><a href="wishlist.html">Wishlist</a></li>
+                                        <li><a href="checkout.html">Checkout</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Single Footer Widget -->
+                        <!-- Start Single Footer Widget -->
+                        <div class="col-md-2 col-sm-6 col-xs-12 xmt-40 smt-40">
+                            <div class="footer">
+                                <h2 class="title__line--2">Our service</h2>
+                                <div class="ft__inner">
+                                    <ul class="ft__list">
+                                        <li><a href="#">My Account</a></li>
+                                        <li><a href="cart.html">My Cart</a></li>
+                                        <li><a href="#">Login</a></li>
+                                        <li><a href="wishlist.html">Wishlist</a></li>
+                                        <li><a href="checkout.html">Checkout</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Single Footer Widget -->
+                        <!-- Start Single Footer Widget -->
+                        <div class="col-md-3 col-sm-6 col-xs-12 xmt-40 smt-40">
+                            <div class="footer">
+                                <h2 class="title__line--2">NEWSLETTER </h2>
+                                <div class="ft__inner">
+                                    <div class="news__input">
+                                        <input type="text" placeholder="Your Mail*" />
+                                        <div class="send__btn">
+                                            <a class="fr__btn" href="#">Send Mail</a>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Single Footer Widget -->
+                    </div>
+                </div>
+            </div>
+            <!-- End Footer Widget -->
+            <!-- Start Copyright Area -->
+            <div class="htc__copyright bg__cat--5">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="copyright__inner">
+                                <p>Copyright© <a href="#"></a> 2019. All right reserved.</p>
+                                <a href="#"><img src="images/others/shape/paypol.png" alt="payment images" /></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Copyright Area -->
+        </footer>
+        <!-- End Footer Style -->
+    </div>
+    <!-- Body main wrapper end -->
+
+    <!-- Placed js at the end of the document so the pages load faster -->
+
+    <!-- jquery latest version -->
+    <h:outputScript library="js" name="vendor/jquery-3.2.1.min.js" />
+    <!-- Bootstrap framework js -->
+    <h:outputScript library="js" name="bootstrap.min.js" />
+    <!-- All js plugins included in this file. -->
+    <h:outputScript library="js" name="plugins.js" />
+    <h:outputScript library="js" name="slick.min.js" />
+    <h:outputScript library="js" name="owl.carousel.min.js" />
+    <!-- Waypoints.min.js. -->
+    <h:outputScript library="js" name="waypoints.min.js" />
+    <!-- Main js file that contents all jQuery plugins activation. -->
+    <h:outputScript library="js" name="main.js" />
+
+</h:body>
+
+
+</html>
